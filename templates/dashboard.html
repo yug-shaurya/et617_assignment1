@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Learning Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand-block">
+                <div class="brand-mark">📘</div>
+                <div>
+                    <p class="eyebrow">Learning hub</p>
+                    <h2>StudyFlow</h2>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span>👤</span> Profile</a>
+                <a href="#" class="nav-item"><span>📊</span> Dashboard</a>
+                <a href="#" class="nav-item"><span>📚</span> Chapters</a>
+                <a href="#" class="nav-item"><span>🎯</span> Goals</a>
+                <a href="#" class="nav-item"><span>⚙️</span> Settings</a>
+            </nav>
+
+            <div class="sidebar-card">
+                <p class="eyebrow">Current target</p>
+                <h3>Complete 3 more math lessons</h3>
+                <div class="mini-progress"><span style="width: 68%"></span></div>
+            </div>
+        </aside>
+
+        <main class="main-panel">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="profile-avatar-wrap">
+                        <img class="profile-avatar" src="{{ url_for('static', filename='profile-avatar.svg') }}" alt="Profile picture">
+                    </div>
+                    <div class="welcome-box">
+                        <p class="eyebrow">Hello, {{ username }}</p>
+                        <p class="subtext">Your Mathematics learning dashboard is ready for today’s study goals.</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="ghost-btn" type="button">🌙 Dark mode</button>
+                    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </header>
+
+            <section class="hero-card card">
+                <div>
+                    <p class="eyebrow">Continue learning</p>
+                    <h2>Mathematics Fundamentals</h2>
+                    <p>Practice equations, patterns, and problem-solving through short video lessons, flashcards, and quick quizzes.</p>
+                </div>
+                <button class="primary-btn" type="button">Continue Learning</button>
+            </section>
+
+            <section class="stats-grid">
+                <article class="card stat-card">
+                    <span class="stat-label">Lessons completed</span>
+                    <strong>14</strong>
+                    <small>6 this week</small>
+                </article>
+                <article class="card stat-card">
+                    <span class="stat-label">Lessons remaining</span>
+                    <strong>5</strong>
+                    <small>Finish before Friday</small>
+                </article>
+                <article class="card stat-card">
+                    <span class="stat-label">Weekly streak</span>
+                    <strong>9 days</strong>
+                    <small>Keep it going</small>
+                </article>
+            </section>
+
+            <section class="card chapter-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Progress tracking</p>
+                        <h2>Chapters</h2>
+                    </div>
+                    <span class="pill">4 of 6 complete</span>
+                </div>
+
+                <div class="chapter-list">
+                    <article class="chapter-card">
+                        <button class="chapter-toggle" type="button" data-target="chapter-1">
+                            <div class="chapter-main">
+                                <div class="progress-ring" style="--percent: 82; --accent: #7c3aed;">
+                                    <span>82%</span>
+                                </div>
+                                <div>
+                                    <h3>Chapter 1 · Algebra Basics</h3>
+                                    <p>6 lessons · 5 completed</p>
+                                </div>
+                            </div>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div id="chapter-1" class="chapter-details open">
+                            <div class="chapter-media">
+                                <video class="lesson-video" controls preload="metadata" poster="https://via.placeholder.com/640x360?text=Algebra+Video">
+                                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-actions">
+                                    <button type="button" class="video-btn" data-video-target="video-1">▶ Play</button>
+                                    <button type="button" class="video-btn" data-video-target="video-1">❚❚ Pause</button>
+                                    <button type="button" class="video-btn seek-btn" data-video-target="video-1">⏩ +10s</button>
+                                    <div class="speed-controls">
+                                        <button type="button" class="speed-btn" data-speed-action="decrease">−</button>
+                                        <span class="speed-value">1.00x</span>
+                                        <button type="button" class="speed-btn" data-speed-action="increase">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flash-card-wrap">
+                                <div class="flash-card-section">
+                                    <div class="section-kicker">Learning facts</div>
+                                    <div class="flash-card-stack" data-flash-set="1">
+                                        <div class="flash-card-item active">
+                                            <strong>Fact 1</strong>
+                                            <span>Variables stand for unknown values and are solved using balance.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 2</strong>
+                                            <span>Equations must stay balanced on both sides.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 3</strong>
+                                            <span>Inverse operations help isolate the variable.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 4</strong>
+                                            <span>Check your answer by substituting it back into the equation.</span>
+                                        </div>
+                                    </div>
+                                    <div class="flash-controls">
+                                        <button type="button" class="flash-prev">← Prev</button>
+                                        <button type="button" class="flash-next">Next →</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-box">
+                                <div class="section-kicker">Short quiz</div>
+                                <div class="question-counter">Question 1 of 3</div>
+                                <div class="quiz-card-stack" data-quiz-set="1">
+                                    <article class="quiz-card-item active">
+                                        <form class="quiz-form" data-correct="x-4">
+                                            <p>Which value makes the equation true? 2x + 4 = 12</p>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q1" value="x-2"> <span>x = 2</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q1" value="x-4"> <span>x = 4</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q1" value="x-6"> <span>x = 6</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="subtract-4">
+                                            <p>What is the first step to solve x + 5 = 11?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q2" value="add-5"> <span>Add 5 to both sides</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q2" value="subtract-4"> <span>Subtract 5 from both sides</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q2" value="multiply-5"> <span>Multiply both sides by 5</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="balance">
+                                            <p>What is the key idea when solving equations?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q3" value="guessing"> <span>Guessing</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q3" value="balance"> <span>Keeping both sides balanced</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-1-q3" value="changing"> <span>Changing the variable</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                </div>
+                                <div class="quiz-controls">
+                                    <button type="button" class="quiz-prev">← Prev</button>
+                                    <button type="button" class="quiz-next">Next →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="chapter-card">
+                        <button class="chapter-toggle" type="button" data-target="chapter-2">
+                            <div class="chapter-main">
+                                <div class="progress-ring" style="--percent: 61; --accent: #0ea5e9;">
+                                    <span>61%</span>
+                                </div>
+                                <div>
+                                    <h3>Chapter 2 · Geometry Essentials</h3>
+                                    <p>5 lessons · 3 completed</p>
+                                </div>
+                            </div>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div id="chapter-2" class="chapter-details">
+                            <div class="chapter-media">
+                                <video class="lesson-video" controls preload="metadata" poster="https://via.placeholder.com/640x360?text=Geometry+Video">
+                                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-actions">
+                                    <button type="button" class="video-btn" data-video-target="video-2">▶ Play</button>
+                                    <button type="button" class="video-btn" data-video-target="video-2">❚❚ Pause</button>
+                                    <button type="button" class="video-btn seek-btn" data-video-target="video-2">⏩ +10s</button>
+                                    <div class="speed-controls">
+                                        <button type="button" class="speed-btn" data-speed-action="decrease">−</button>
+                                        <span class="speed-value">1.00x</span>
+                                        <button type="button" class="speed-btn" data-speed-action="increase">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flash-card-wrap">
+                                <div class="flash-card-section">
+                                    <div class="section-kicker">Learning facts</div>
+                                    <div class="flash-card-stack" data-flash-set="2">
+                                        <div class="flash-card-item active">
+                                            <strong>Fact 1</strong>
+                                            <span>A triangle always has three sides and three angles.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 2</strong>
+                                            <span>A square has four equal sides and four right angles.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 3</strong>
+                                            <span>Geometry uses shapes, lines, and measurements to describe space.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 4</strong>
+                                            <span>Angles are measured in degrees and help classify shapes.</span>
+                                        </div>
+                                    </div>
+                                    <div class="flash-controls">
+                                        <button type="button" class="flash-prev">← Prev</button>
+                                        <button type="button" class="flash-next">Next →</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-box">
+                                <div class="section-kicker">Short quiz</div>
+                                <div class="question-counter">Question 1 of 3</div>
+                                <div class="quiz-card-stack" data-quiz-set="2">
+                                    <article class="quiz-card-item active">
+                                        <form class="quiz-form" data-correct="triangle">
+                                            <p>Which shape has exactly 3 sides?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q1" value="circle"> <span>Circle</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q1" value="triangle"> <span>Triangle</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q1" value="square"> <span>Square</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="right-angle">
+                                            <p>What type of angle does a square have at each corner?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q2" value="acute"> <span>Acute</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q2" value="right-angle"> <span>Right angle</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q2" value="obtuse"> <span>Obtuse</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="degrees">
+                                            <p>How are angles usually measured?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q3" value="meters"> <span>Meters</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q3" value="degrees"> <span>Degrees</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-2-q3" value="liters"> <span>Liters</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                </div>
+                                <div class="quiz-controls">
+                                    <button type="button" class="quiz-prev">← Prev</button>
+                                    <button type="button" class="quiz-next">Next →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="chapter-card">
+                        <button class="chapter-toggle" type="button" data-target="chapter-3">
+                            <div class="chapter-main">
+                                <div class="progress-ring" style="--percent: 45; --accent: #f97316;">
+                                    <span>45%</span>
+                                </div>
+                                <div>
+                                    <h3>Chapter 3 · Calculus Basics</h3>
+                                    <p>4 lessons · 2 completed</p>
+                                </div>
+                            </div>
+                            <span class="toggle-icon">+</span>
+                        </button>
+                        <div id="chapter-3" class="chapter-details open">
+                            <div class="chapter-media">
+                                <video class="lesson-video" controls preload="metadata" poster="https://via.placeholder.com/640x360?text=Calculus+Video">
+                                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                </video>
+                                <div class="video-actions">
+                                    <button type="button" class="video-btn" data-video-target="video-3">▶ Play</button>
+                                    <button type="button" class="video-btn" data-video-target="video-3">❚❚ Pause</button>
+                                    <button type="button" class="video-btn seek-btn" data-video-target="video-3">⏩ +10s</button>
+                                    <div class="speed-controls">
+                                        <button type="button" class="speed-btn" data-speed-action="decrease">−</button>
+                                        <span class="speed-value">1.00x</span>
+                                        <button type="button" class="speed-btn" data-speed-action="increase">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flash-card-wrap">
+                                <div class="flash-card-section">
+                                    <div class="section-kicker">Learning facts</div>
+                                    <div class="flash-card-stack" data-flash-set="3">
+                                        <div class="flash-card-item active">
+                                            <strong>Fact 1</strong>
+                                            <span>A derivative measures how one quantity changes with respect to another.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 2</strong>
+                                            <span>It is often described as the slope of a curve at a point.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 3</strong>
+                                            <span>Derivatives help explain speed, growth, and change.</span>
+                                        </div>
+                                        <div class="flash-card-item">
+                                            <strong>Fact 4</strong>
+                                            <span>Calculus connects formulas to motion and patterns.</span>
+                                        </div>
+                                    </div>
+                                    <div class="flash-controls">
+                                        <button type="button" class="flash-prev">← Prev</button>
+                                        <button type="button" class="flash-next">Next →</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-box">
+                                <div class="section-kicker">Short quiz</div>
+                                <div class="question-counter">Question 1 of 3</div>
+                                <div class="quiz-card-stack" data-quiz-set="3">
+                                    <article class="quiz-card-item active">
+                                        <form class="quiz-form" data-correct="rate-of-change">
+                                            <p>What does a derivative tell us?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q1" value="shape"> <span>Shape</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q1" value="rate-of-change"> <span>Rate of change</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q1" value="time"> <span>Time only</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="slope">
+                                            <p>What is the derivative often described as on a curve?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q2" value="area"> <span>Area</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q2" value="slope"> <span>Slope</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q2" value="length"> <span>Length</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                    <article class="quiz-card-item">
+                                        <form class="quiz-form" data-correct="growth">
+                                            <p>Which idea is closely connected with derivatives?</p>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q3" value="growth"> <span>Growth and change</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q3" value="weight"> <span>Weight only</span></label>
+                                            <label class="option-row"><input type="radio" name="quiz-3-q3" value="location"> <span>Location only</span></label>
+                                            <button type="submit">Check answer</button>
+                                            <div class="quiz-result"></div>
+                                        </form>
+                                    </article>
+                                </div>
+                                <div class="quiz-controls">
+                                    <button type="button" class="quiz-prev">← Prev</button>
+                                    <button type="button" class="quiz-next">Next →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="card activity-card">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Recent activity</p>
+                        <h2>Tracked learner activity</h2>
+                    </div>
+                    <span class="pill">{{ total_events }} events</span>
+                </div>
+                <div class="activity-list">
+                    {% for item in recent_activity %}
+                        <div class="activity-row">
+                            <span class="activity-tag">{{ item["event_type"] }}</span>
+                            <span>{{ item["event_target"] }}</span>
+                            <span>{{ item["created_at"] }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const sessionUser = {{ username|tojson }};
+
+        function logEvent(eventType, eventTarget, metadata = {}) {
+            fetch('/api/log_event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ event_type: eventType, event_target: eventTarget, metadata: metadata })
+            });
+        }
+
+        document.addEventListener('click', function (event) {
+            const target = event.target.closest('button, input, a, video');
+            if (target) {
+                logEvent('click', target.tagName.toLowerCase(), { label: target.textContent || target.id || 'element-clicked' });
+            }
+        });
+
+        window.addEventListener('load', function () {
+            logEvent('page_view', 'dashboard', { user: sessionUser });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('studyflow-theme');
+
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeToggle.textContent = '☀️ Light mode';
+        }
+
+        themeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('studyflow-theme', isLight ? 'light' : 'dark');
+            themeToggle.textContent = isLight ? '☀️ Light mode' : '🌙 Dark mode';
+        });
+
+        document.querySelectorAll('.chapter-toggle').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const target = document.getElementById(button.dataset.target);
+                const isOpen = target.classList.toggle('open');
+                button.querySelector('.toggle-icon').textContent = isOpen ? '−' : '+';
+            });
+        });
+
+        document.querySelectorAll('.flash-card-stack').forEach(function (stack) {
+            const cards = Array.from(stack.querySelectorAll('.flash-card-item'));
+            let currentIndex = 0;
+
+            function updateFlashCard(direction) {
+                cards[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + direction + cards.length) % cards.length;
+                cards[currentIndex].classList.add('active');
+            }
+
+            stack.parentElement.querySelector('.flash-prev').addEventListener('click', function () {
+                updateFlashCard(-1);
+            });
+
+            stack.parentElement.querySelector('.flash-next').addEventListener('click', function () {
+                updateFlashCard(1);
+            });
+        });
+
+        document.querySelectorAll('.quiz-card-stack').forEach(function (stack) {
+            const cards = Array.from(stack.querySelectorAll('.quiz-card-item'));
+            const counter = stack.parentElement.querySelector('.question-counter');
+            let currentIndex = 0;
+
+            function updateQuizCard(direction) {
+                cards[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + direction + cards.length) % cards.length;
+                cards[currentIndex].classList.add('active');
+                if (counter) {
+                    counter.textContent = 'Question ' + (currentIndex + 1) + ' of ' + cards.length;
+                }
+            }
+
+            stack.parentElement.querySelector('.quiz-prev').addEventListener('click', function () {
+                updateQuizCard(-1);
+            });
+
+            stack.parentElement.querySelector('.quiz-next').addEventListener('click', function () {
+                updateQuizCard(1);
+            });
+        });
+
+        document.querySelectorAll('.video-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const video = button.closest('.chapter-media').querySelector('.lesson-video');
+                const action = button.textContent.trim();
+
+                if (action === '▶ Play') {
+                    video.play();
+                } else if (action === '❚❚ Pause') {
+                    video.pause();
+                } else if (action === '⏩ +10s') {
+                    video.currentTime = Math.min(video.currentTime + 10, video.duration || video.currentTime + 10);
+                }
+            });
+        });
+
+        document.querySelectorAll('.speed-controls').forEach(function (controls) {
+            const speedValue = controls.querySelector('.speed-value');
+            const video = controls.closest('.chapter-media').querySelector('.lesson-video');
+            let speed = 1.0;
+
+            controls.querySelectorAll('.speed-btn').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const action = button.dataset.speedAction;
+                    if (action === 'increase') {
+                        speed = Math.min(2.0, Number((speed + 0.25).toFixed(2)));
+                    } else if (action === 'decrease') {
+                        speed = Math.max(0.5, Number((speed - 0.25).toFixed(2)));
+                    }
+                    video.playbackRate = speed;
+                    speedValue.textContent = speed.toFixed(2) + 'x';
+                });
+            });
+        });
+
+        document.querySelectorAll('.quiz-form').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const selected = form.querySelector('input[type="radio"]:checked');
+                const resultBox = form.querySelector('.quiz-result');
+                const correctAnswer = form.dataset.correct;
+
+                if (!selected) {
+                    resultBox.textContent = 'Please choose an answer first.';
+                    return;
+                }
+
+                const isCorrect = selected.value === correctAnswer;
+                resultBox.textContent = isCorrect
+                    ? 'Correct — great job!'
+                    : 'Not quite — try the chapter video again and review the flashcard.';
+                logEvent('quiz_attempt', 'math-quiz', { selected_answer: selected.value, correct: isCorrect });
+            });
+        });
+    </script>
+</body>
+</html>
